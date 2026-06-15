@@ -1,0 +1,9 @@
+{
+  "name": "我的個人收藏",
+  "short_name": "收藏",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4a90d9",
+  "icons": []
+}
