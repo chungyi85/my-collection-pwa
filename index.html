@@ -8,7 +8,14 @@
   <meta name="theme-color" content="#4a90d9">
 </head>
 <body>
-  <h1>Hello PWA!</h1>
+  <h1>我的收藏</h1>
+
+  <form id="collection-form">
+    <input type="text" id="item-name" placeholder="名稱" required>
+    <textarea id="item-desc" placeholder="描述" rows="2"></textarea>
+    <input type="url" id="item-photo" placeholder="照片網址 (選填)">
+    <button type="submit">新增收藏</button>
+  </form>
 
   <script>
     if ('serviceWorker' in navigator) {
