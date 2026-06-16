@@ -85,6 +85,15 @@
   .item button:hover {
     background: #c0392b;
   }
+  .category {
+    display: inline-block;
+    padding: 2px 8px;
+    background: #4a90d9;
+    color: #fff;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
 </style>
 </head>
 <body>
@@ -113,10 +122,12 @@
     const name = document.getElementById('item-name').value.trim();
     const desc = document.getElementById('item-desc').value.trim();
     const photo = document.getElementById('item-photo').value.trim();
+    const category = document.getElementById('item-category').value;
 
     const item = {
       id: Date.now(),
       name,
+      category,
       desc,
       photo
     };
@@ -146,6 +157,7 @@
     div.innerHTML = `
      ${item.photo ? `<img src="${item.photo}" alt="${item.name}">` : ''}
       <h3>${item.name}</h3>
+      ${item.category ? `<span class="category">${item.category}</span>` : ''}
       <p>${item.desc}</p>
       <button onclick="deleteItem(${item.id})">刪除</button>
     `;
