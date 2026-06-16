@@ -16,7 +16,31 @@
     <input type="url" id="item-photo" placeholder="照片網址 (選填)">
     <button type="submit">新增收藏</button>
   </form>
+<script>
+  const form = document.getElementById('collection-form');
 
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('item-name').value.trim();
+    const desc = document.getElementById('item-desc').value.trim();
+    const photo = document.getElementById('item-photo').value.trim();
+
+    const item = {
+      id: Date.now(),
+      name,
+      desc,
+      photo
+    };
+
+    const items = JSON.parse(localStorage.getItem('myCollection') || '[]');
+    items.push(item);
+    localStorage.setItem('myCollection', JSON.stringify(items));
+
+    alert('收藏成功！');
+    form.reset();
+  });
+</script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
