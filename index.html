@@ -57,13 +57,21 @@
     div.innerHTML = `
       <h3>${item.name}</h3>
       <p>${item.desc}</p>
+      <button onclick="deleteItem(${item.id})">刪除</button>
     `;
     list.appendChild(div);
   });
 }
 
 renderItems();
+  function deleteItem(id) {
+  const items = JSON.parse(localStorage.getItem('myCollection') || '[]');
+  const updated = items.filter((item) => item.id !== id);
+  localStorage.setItem('myCollection', JSON.stringify(updated));
+  renderItems();
+}
 </script>
+  
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
