@@ -39,7 +39,30 @@
 
     alert('收藏成功！');
     form.reset();
+    renderItems();
+    });
+    function renderItems() {
+  const list = document.getElementById('collection-list');
+  const items = JSON.parse(localStorage.getItem('myCollection') || '[]');
+
+  list.innerHTML = '';
+
+  if (items.length === 0) {
+    list.innerHTML = '<p>還沒有收藏項目！</p>';
+    return;
+  }
+
+  items.forEach((item) => {
+    const div = document.createElement('div');
+    div.innerHTML = `
+      <h3>${item.name}</h3>
+      <p>${item.desc}</p>
+    `;
+    list.appendChild(div);
   });
+}
+
+renderItems();
 </script>
   <script>
     if ('serviceWorker' in navigator) {
